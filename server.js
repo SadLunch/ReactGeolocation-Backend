@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://reactgeolocation.netlify.app", // The frontend URL
+    origin: "https://reactgeolocation.netlify.app",  // The frontend URL
     methods: ["GET", "POST"]
   }
 });
