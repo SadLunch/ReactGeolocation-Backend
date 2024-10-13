@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://reactgeolocation.netlify.app",  // The frontend URL
+    origin: "https://reactgeolocation.netlify.app", // The frontend URL
     methods: ["GET", "POST"]
   }
 });
@@ -18,8 +18,9 @@ io.on('connection', (socket) => {
   console.log('A user connected');
 
   // Listen for location updates from clients
-  socket.on('send-location', (location) => {
+  socket.on('send-location', (location, user) => {
     console.log('User location:', location);
+    console.log('user id:', user);
 
     // Broadcast location to all other clients
     socket.broadcast.emit('user-location', location);
