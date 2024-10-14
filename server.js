@@ -20,6 +20,10 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log('A user connected');
 
+  socket.on('feedback', (feedback) => {
+    console.log(feedback);
+  })
+
   // Listen for location updates from clients
   socket.on('send-location', (user_location, target_location, user) => {
     console.log('User location:', user_location);
@@ -31,7 +35,7 @@ io.on('connection', (socket) => {
     console.log('Distance between user and target(m):', distanceInMeters);
 
     // Broadcast location to all other clients
-    socket.broadcast.emit('user-location', user_location);
+    socket.broadcast.emit('user-location', user_location, user);
   });
 
   socket.on('disconnect', () => {
