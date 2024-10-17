@@ -24,7 +24,7 @@ let experiences = [
   {id: 2, location: {lat: 38.709899442837504, lng: -9.141786418367884}, minDistance: 10, name: 'Modelo', image: '', nUsersIn: 0},
   {id: 3, location: {lat: 38.71051049617013, lng: -9.142228602930569}, minDistance: 10, name: 'Estatua', image: '', nUsersIn: 0},
   {id: 4, location: {lat: 38.709363862713104, lng: -9.141031676168348}, minDistance: 10, name: 'MUP', image: '', nUsersIn: 0},
-  {id: 5, location: {lat: 38.65109183413688, lng: -9.173760194424412}, minDistance: 20, name: 'Casa Teste', image: '', nUsersIn: 0},
+  {id: 5, location: {lat: 38.65109183413688, lng: -9.173760194424412}, minDistance: 20, name: 'Casa Teste', image: '', nUsersIn: 0}
 ]
 
 io.on('connection', (socket) => {
