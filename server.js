@@ -33,8 +33,8 @@ io.on('connection', (socket) => {
   socket.on('feedback', (feedback) => {
     console.log(feedback);
   })
-  
-  socket.broadcast.emit('exp-location', experiences);
+
+  socket.emit('exp-location', experiences);
 
   // Listen for location updates from clients
   socket.on('send-location', (user_location, user, currentExperience) => {
