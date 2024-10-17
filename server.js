@@ -52,8 +52,6 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('locations', experiences); 
   });
 
-  socket.off('send-location')
-
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
