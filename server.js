@@ -30,13 +30,13 @@ let experiences = [
 io.on('connection', (socket) => {
   console.log('A user connected');
 
+  socket.emit('exp-location', experiences);  // Emit to the connected user directly
+
   socket.on('feedback', (feedback) => {
     console.log(feedback);
-  })
+  });
 
-  socket.emit('exp-location', experiences);
-
-  // Listen for location updates from clients
+  // Listen for location updates
   socket.on('send-location', (user_location, user, currentExperience) => {
     console.log('User location:', user_location);
     console.log('user id:', user);
@@ -47,18 +47,17 @@ io.on('connection', (socket) => {
 
       console.log('Distance between user and target(m):', distanceInMeters);
 
-      // Broadcast location to all other clients
+      // Update number of users
       if (distanceInMeters < experience.minDistance)
         experience.nUsersIn += 1;
     }
   });
 
-  
-
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
 });
+
 
 server.listen(5000, () => {
   console.log('Server running on http://localhost:5000');
