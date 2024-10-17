@@ -30,7 +30,7 @@ let experiences = [
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  socket.emit('exp-location', experiences);  // Emit to the connected user directly
+  io.emit('exp-location', experiences);  // Emit to the connected user directly
 
   socket.on('feedback', (feedback) => {
     console.log(feedback);
