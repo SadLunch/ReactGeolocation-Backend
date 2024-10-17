@@ -34,6 +34,8 @@ io.on('connection', (socket) => {
     console.log(feedback);
   });
 
+  socket.broadcast.emit('locations', experiences); 
+
   // Listen for location updates
   socket.on('send-location', (user_location, user, currentExperience) => {
     console.log('User location:', user_location);
@@ -49,7 +51,6 @@ io.on('connection', (socket) => {
       if (distanceInMeters < experience.minDistance)
         experience.nUsersIn += 1;
     }
-    socket.broadcast.emit('locations', experiences); 
   });
 
   socket.on('disconnect', () => {
