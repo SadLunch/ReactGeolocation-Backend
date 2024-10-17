@@ -30,8 +30,6 @@ let experiences = [
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  socket.broadcast.emit('locations', experiences);  
-
   socket.on('feedback', (feedback) => {
     console.log(feedback);
   });
@@ -51,6 +49,7 @@ io.on('connection', (socket) => {
       if (distanceInMeters < experience.minDistance)
         experience.nUsersIn += 1;
     }
+    socket.broadcast.emit('locations', experiences); 
   });
 
   socket.on('disconnect', () => {
