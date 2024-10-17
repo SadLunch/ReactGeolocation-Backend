@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
   console.log('A user connected');
 
   experiences.forEach((experience) => {
-    io.emit('locations', experience, experience.id);  // Emit to the connected user directly
+    io.emit('locations', experience, experience.id, true);  // Emit to the connected user directly
   });
 
   socket.on('feedback', (feedback) => {
