@@ -23,12 +23,12 @@ const io = new Server(server, {
   }
 });
 
-io.send(experiences);
+//io.send(experiences);
 
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  //io.emit('experiences', experiences);
+  io.emit('experiences', experiences);
 
   // Listen for location updates from clients
   socket.on('send-location', (user_location, target_location, user) => {
