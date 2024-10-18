@@ -38,8 +38,8 @@ io.on('connection', (socket) => {
 
   // Listen for location updates from clients
   socket.on('send-location', (user_location, user) => {
-    console.log('User location:', user_location);
-    console.log('user id:', user);
+    //console.log('User location:', user_location);
+    //console.log('user id:', user);
     
     //const distanceInMeters = geolib.getDistance(user_location, target_location);
 
