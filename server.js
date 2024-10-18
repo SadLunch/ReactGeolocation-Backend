@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
     console.log('Distance between user and target(m):', distanceInMeters);
 
     // Broadcast location to all other clients
-    socket.broadcast.emit('user-location', user_location);
+    socket.broadcast.emit('user-location', user_location, user);
   });
 
   socket.on('disconnect', () => {
