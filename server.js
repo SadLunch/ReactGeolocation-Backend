@@ -24,10 +24,15 @@ const io = new Server(server, {
 });
 
 //io.send(experiences);
-io.emit('experiences', experiences);
+//io.emit('experiences', experiences);
 
 io.on('connection', (socket) => {
   console.log('A user connected');
+
+  socket.on('ask-locations', (text) => {
+    console.log('Request made: ', text);
+    socket.emit('experiences', experiences);
+  })
 
   
 
