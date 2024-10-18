@@ -37,14 +37,13 @@ io.on('connection', (socket) => {
   
 
   // Listen for location updates from clients
-  socket.on('send-location', (user_location, target_location, user) => {
+  socket.on('send-location', (user_location, user) => {
     console.log('User location:', user_location);
-    console.log('Target location:', target_location);
     console.log('user id:', user);
     
-    const distanceInMeters = geolib.getDistance(user_location, target_location);
+    //const distanceInMeters = geolib.getDistance(user_location, target_location);
 
-    console.log('Distance between user and target(m):', distanceInMeters);
+    //console.log('Distance between user and target(m):', distanceInMeters);
 
     // Broadcast location to all other clients
     socket.broadcast.emit('user-location', user_location, user);
