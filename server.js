@@ -50,6 +50,9 @@ io.on('connection', (socket) => {
       // Update number of users
       if (distanceInMeters < experience.minDistance)
         experience.nUsersIn += 1;
+
+      // Broadcast location to all other clients
+      socket.broadcast.emit('user-location', user_location, user);
     }
   });
 
