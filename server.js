@@ -14,6 +14,14 @@ let experiences = [
 
 const app = express();
 app.use(cors());
+app.use(express.json());  // For parsing JSON bodies in POST requests
+
+// HTTP REST API Routes
+
+// GET: Retrieve all experiences
+app.get('/api/experiences', (req, res) => {
+  res.json(experiences);
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -29,10 +37,10 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  socket.on('ask-locations', (text) => {
-    console.log('Request made: ', text);
-    socket.emit('experiences', experiences);
-  })
+  // socket.on('ask-locations', (text) => {
+  //   console.log('Request made: ', text);
+  //   socket.emit('experiences', experiences);
+  // })
 
   
 
@@ -41,9 +49,9 @@ io.on('connection', (socket) => {
     //console.log('User location:', user_location);
     //console.log('user id:', user);
     
-    //const distanceInMeters = geolib.getDistance(user_location, target_location);
+    // const distanceInMeters = geolib.getDistance(user_location, target_location);
 
-    //console.log('Distance between user and target(m):', distanceInMeters);
+    // console.log('Distance between user and target(m):', distanceInMeters);
 
     // Broadcast location to all other clients
     socket.broadcast.emit('user-location', user_location, user);
