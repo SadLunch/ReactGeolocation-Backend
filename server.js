@@ -17,7 +17,8 @@ const app = express();
 // Use the CORS middleware and allow requests from your frontend URL
 app.use(cors({
   origin: 'https://reactgeolocation.netlify.app', // Replace with your actual frontend URL
-  methods: ['GET', 'POST']
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
 
 app.use(express.json());  // For parsing JSON bodies in POST requests
@@ -33,7 +34,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "https://reactgeolocation.netlify.app", // The frontend URL
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
