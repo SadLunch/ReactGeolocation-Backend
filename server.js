@@ -3,6 +3,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const geolib = require('geolib');
+const { getEnvironmentData } = require('worker_threads');
 
 let experiences = [
   {id: 1, location: {lat: 38.710712892523695, lng: -9.14116628132217}, minDistance: 10, name: 'Bertrand', image: '', nUsersIn: 0},
@@ -16,7 +17,7 @@ const app = express();
 
 // Use the CORS middleware and allow requests from your frontend URL
 app.use(cors({
-  origin: 'https://reactgeolocation.netlify.app', // Replace with your actual frontend URL
+  origin: process.env.FRONTEND_URL, // Replace with your actual frontend URL
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -33,7 +34,7 @@ app.get('/api/experiences', (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://reactgeolocation.netlify.app", // The frontend URL
+    origin: process.env.FRONTEND_URL, // The frontend URL
     methods: ["GET", "POST"],
     credentials: true
   }
