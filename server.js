@@ -13,7 +13,13 @@ let experiences = [
 ]
 
 const app = express();
-app.use(cors());
+
+// Use the CORS middleware and allow requests from your frontend URL
+app.use(cors({
+  origin: 'https://reactgeolocation.netlify.app', // Replace with your actual frontend URL
+  methods: ['GET', 'POST']
+}));
+
 app.use(express.json());  // For parsing JSON bodies in POST requests
 
 // HTTP REST API Routes
